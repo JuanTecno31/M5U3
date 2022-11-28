@@ -1,0 +1,41 @@
+<div class="container" style="margin-top:50px auto">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h4>Modificar el producto</h4>
+            <form action="/admin/productos/modificar" method="post" enctype="multipart/form-data">
+                <input type="hidden" value="{{prod.id}}" name="id">
+                <div class="mb-3 row">
+                    <input type="text" placeholder="Producto" value="{{prod.name}}" class="form-control" name="name">
+                </div>
+                <div class="mb-3 row">
+                    <input type="text" placeholder="Marca" value="{{prod.title}}" class="form-control" name="title">
+                </div>
+                <div class="mb-3 row">
+                    <textarea placeholder="Descripción" class="form-control" name="description">{{prod.description}}</textarea>
+                </div>
+                <div class="mb-3 row">
+                    <input type="number" placeholder="Stock" value="{{prod.stock}}" class="form-control" name="stock">
+                </div>
+                <div class="mb-3 row">
+                    <input type="number" placeholder="Precio" value="{{prod.price}}" class="form-control" name="price">
+                </div>
+                <div class="mb-3 row">
+                    <p>
+                        <label>Imagen: <input type="file" class="form-control" name="img_id" id="imagen"></label>
+                    </p>
+                    <p>
+                        <label><input type="checkbox" name="img_delete" id="img_delete"
+                                value="1"> ¿Desea eliminar la imagen actual?</label>
+                        <input type="hidden" name="img_original" value="{{prod.img_id}}">
+                    </p>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Modificar</button>
+                </div>
+            </form>
+            {{#if error}}
+            <p>{{message}}</p>
+            {{/if}}
+        </div>
+    </div>
+</div>
