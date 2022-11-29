@@ -13,7 +13,7 @@ router.get('/productos', async function (req, res, next) {
                 width: 960,
                 height: 200,
                 crop: 'fill'
-            })
+            });
             return {
                 ...prod,
                 imagen
@@ -24,8 +24,9 @@ router.get('/productos', async function (req, res, next) {
                 imagen: ''
             }
     }
-    })
+    });
+
 res.json(prod);
-})
+});
 
 module.exports = router;
