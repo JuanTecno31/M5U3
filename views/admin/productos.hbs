@@ -19,25 +19,26 @@
             <table class="table">
                 <thead>
                     <tr class="table-dark">
-                        <th scope="col">#</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Descripción</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Precio</th>
-                        <th scope="text-end">Imagen</th>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col" class="text-center">Producto</th>
+                        <th scope="col" class="text-center">Marca</th>
+                        <th scope="col" class="text-center">Descripción</th>
+                        <th scope="col" class="text-center">Stock</th>
+                        <th scope="col" class="text-center">Precio</th>
+                        <th scope="col" class="text-center">Imagen</th>
+                        <th class="text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
                     {{#each productos}}
                     <tr>
-                        <th scope="row">{{id}}</th>
-                        <td>{{name}}</td>
-                        <td>{{title}}</td>
-                        <td>{{description}}</td>
-                        <td>{{stock}}</td>
-                        <td>{{price}}</td>
-                        <td>{{{imagen}}}</td>
+                        <th scope="row" class="text-center">{{id}}</th>
+                        <td class="text-center">{{name}}</td>
+                        <td class="text-center">{{title}}</td>
+                        <td class="text-center">{{description}}</td>
+                        <td class="text-center">{{stock}}</td>
+                        <td class="text-center">{{price}}</td>
+                        <td class="text-center">{{{imagen}}}</td>
                         <td class="text-end">
                             <a class="btn btn-secondary" href="/admin/productos/modificar/{{id}}"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
                             <a class="btn btn-secondary" href="/admin/productos/eliminar/{{id}}"><i class="fa fa-trash" aria-hidden="true"></i> </a>

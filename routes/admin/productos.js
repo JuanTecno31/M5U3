@@ -44,7 +44,6 @@ router.get('/agregar', (req, res, next) => {
 })
 
 router.post('/agregar', async (req, res, next) => {
-    console.log(req.body);
 
     try {
 
@@ -56,7 +55,6 @@ router.post('/agregar', async (req, res, next) => {
 
 
         if (req.body.name != "" && req.body.title != "" && req.body.description != "" && req.body.stock != "" && req.body.price != "") {
-            await productosModel.insertProducts(req.body)
 
             await productosModel.insertProducts({
                 ...req.body,
@@ -84,6 +82,13 @@ router.post('/agregar', async (req, res, next) => {
 
 router.get('/eliminar/:id', async (req, res, next) => {
     var id = req.params.id;
+
+    let prod = await productosModel.getProductsById(id);
+    if (prod.img_id) {
+        await (destroy(prod.img_id));
+    }
+
+
     await productosModel.deleteProductsById(id);
     res.redirect('/admin/productos')
 });
@@ -100,7 +105,6 @@ router.get('/modificar/:id', async (req, res, next) => {
 
 router.post('/modificar', async (req, res, next) => {
     try {
-
         let img_id = req.body.img_original;
         let borrar_img_vieja = false;
         if (req.body.img_delete === "1") {
