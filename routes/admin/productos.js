@@ -110,15 +110,18 @@ router.post('/modificar', async (req, res, next) => {
         if (req.body.img_delete === "1") {
             img_id = null;
             borrar_img_vieja = true;
+            console.log('se borro la imagen',req.body);
         } else {
-            if (req.files && Object.keys(req.files).lenght > 0) {
+            if (req.files && Object.keys(req.files).length > 0) {
                 imagen = req.files.imagen;
                 img_id = (await uploader(imagen.tempFilePath)).public_id;
                 borrar_img_vieja = true;
+                console.log('se puso una imagen nueva',req.body);
             }
         }
         if (borrar_img_vieja && req.body.img_original) {
             await (destroy(req.body.img_original));
+            console.log('se reemplazo una imagen', req.body);
         }
 
         let obj = {
